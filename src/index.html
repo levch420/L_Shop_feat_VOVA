@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>L_Shop — кондитерский магазин</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <h1 class="logo">
+            <a href="/">🍭 L_Shop</a>
+          </h1>
+          <nav class="nav">
+            <a href="#" class="nav__link">Каталог</a>
+            <a href="#" class="nav__link">Акции</a>
+            <a href="#" class="nav__link cart-link"
+              >🛒 Корзина (<span class="cart-count">0</span>)</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="catalog-toolbar">
+          <label class="search-field">
+            <span class="visually-hidden">Поиск по товарам</span>
+            <input
+              type="search"
+              id="productSearch"
+              placeholder="Поиск по названию или описанию…"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+        <div class="categories buttons"></div>
+        <div class="products"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 L_Shop. Все права защищены. 🍬</p>
+      </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="categoryItemTemp">
+      <div class="category__item">
+        <span class="category__item-name"></span>
+      </div>
+    </template>
+
+    <template id="productItemTemp">
+      <div class="product__item">
+        <div class="product__image"></div>
+        <div class="product__info">
+          <h3 class="product__title"></h3>
+          <p class="product__description"></p>
+          <div class="product__price"></div>
+          <button class="product__add-to-cart">В корзину</button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+      <div class="cart-modal__content">
+        <div class="cart-modal__header">
+          <h2>🛒 Корзина</h2>
+          <button class="cart-modal__close">&times;</button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+          <span>Итого: <span class="cart-total-price">0 ₽</span></span>
+          <button type="button" class="cart-checkout">Оформить заказ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout -->
+    <div class="cart-modal checkout-modal" id="checkoutModal">
+      <div class="cart-modal__content checkout-modal__content">
+        <div class="cart-modal__header">
+          <h2>Оформление заказа</h2>
+          <button type="button" class="checkout-modal__close modal-close" aria-label="Закрыть">
+            &times;
+          </button>
+        </div>
+        <form id="checkoutForm" class="checkout-form">
+          <label class="checkout-form__label">
+            Ваше имя
+            <input
+              class="checkout-form__input"
+              name="name"
+              type="text"
+              required
+              maxlength="120"
+              autocomplete="name"
+            />
+          </label>
+          <label class="checkout-form__label">
+            Телефон
+            <input
+              class="checkout-form__input"
+              name="phone"
+              type="tel"
+              required
+              placeholder="+7 900 000-00-00"
+              autocomplete="tel"
+            />
+          </label>
+          <label class="checkout-form__label">
+            Комментарий к заказу
+            <textarea
+              class="checkout-form__textarea"
+              name="comment"
+              rows="3"
+              maxlength="500"
+              placeholder="По желанию"
+            ></textarea>
+          </label>
+          <button type="submit" class="cart-checkout checkout-form__submit">
+            Подтвердить заказ
+          </button>
+        </form>
+        <div id="checkoutSuccess" class="checkout-success hidden">
+          <p class="checkout-success__text"></p>
+          <button type="button" class="cart-checkout checkout-success__close">Готово</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
